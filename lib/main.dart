@@ -1,10 +1,8 @@
 import 'package:chat_app_flutter/colors.dart';
 import 'package:chat_app_flutter/firebase_options.dart';
-import 'package:chat_app_flutter/screens/mobile_layout_screen.dart';
-import 'package:chat_app_flutter/screens/web_layout_screen.dart';
-import 'package:chat_app_flutter/utils/responsive_layout.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'features/landing/screen/landing_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,10 +23,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      home: const ResponsiveLayout(
-        mobileScreenLayout: MobileLayoutScreen(),
-        webScreenLayout: WebLayoutScreen(),
-      ),
+      home: LandingScreen(),
+      // home: const ResponsiveLayout(
+      //   mobileScreenLayout: MobileLayoutScreen(),
+      //   webScreenLayout: WebLayoutScreen(),
+      // ),
     );
   }
 }
