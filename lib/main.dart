@@ -1,5 +1,6 @@
 import 'package:chat_app_flutter/colors.dart';
 import 'package:chat_app_flutter/firebase_options.dart';
+import 'package:chat_app_flutter/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'features/landing/screen/landing_screen.dart';
@@ -22,7 +23,13 @@ class MyApp extends StatelessWidget {
       title: 'Whatsapp UI',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: AppBarTheme(
+            color: appBarColor,
+            centerTitle: true
+        ),
       ),
+
+      onGenerateRoute: (setting)=>generateRoute(setting),
       home: LandingScreen(),
       // home: const ResponsiveLayout(
       //   mobileScreenLayout: MobileLayoutScreen(),

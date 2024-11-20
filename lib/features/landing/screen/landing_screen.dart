@@ -1,15 +1,16 @@
 import 'package:chat_app_flutter/colors.dart';
 import 'package:chat_app_flutter/common/widgets/custom_button.dart';
+import 'package:chat_app_flutter/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class LandingScreen extends StatefulWidget {
+class LandingScreen extends StatelessWidget {
+
   const LandingScreen({super.key});
 
-  @override
-  State<LandingScreen> createState() => _LandingScreenState();
-}
+  void navigationToLoginPage(BuildContext context){
+    Navigator.pushNamed(context, LoginScreen.routeName);
+  }
 
-class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -51,7 +52,7 @@ class _LandingScreenState extends State<LandingScreen> {
               width: size.width * 0.75,
               child: CustomButton(
                 text: "ACCEPT AND CONTINUE",
-                onPressed: () {},
+                onPressed: ()=>navigationToLoginPage(context),
               ),
             )
           ],
