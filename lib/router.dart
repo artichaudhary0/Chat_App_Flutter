@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'common/widgets/error_screen.dart';
 import 'features/auth/screens/login_screen.dart';
+import 'features/auth/screens/opt_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -14,7 +15,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => LoginScreen(),
       );
-
+    case OTPScreen.routeName:
+      final verificationId = settings.arguments as String;
+      return MaterialPageRoute(builder: (context)=>OTPScreen(verificationId: verificationId,));
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(

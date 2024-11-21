@@ -1,17 +1,23 @@
+import 'dart:developer';
+
 import 'package:chat_app_flutter/colors.dart';
+import 'package:chat_app_flutter/common/utils/ultils.dart';
 import 'package:chat_app_flutter/common/widgets/custom_button.dart';
+import 'package:chat_app_flutter/features/auth/controller/auth_controller.dart';
+import 'package:chat_app_flutter/features/auth/screens/opt_screen.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = "/login-screen";
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   TextEditingController phoneController = TextEditingController();
   Country? country;
 
@@ -24,14 +30,27 @@ class _LoginScreenState extends State<LoginScreen> {
   void pickCountry() {
     showCountryPicker(
       context: context,
-      showPhoneCode:
-          true, // optional. Shows phone code before the country name.
+      showPhoneCode: true,
       onSelect: (Country _country) {
         setState(() {
           country = _country;
         });
       },
     );
+  }
+
+  void sendPhoneNumber() {
+    String phoneNumber = phoneController.text.trim();
+
+
+    if (country != null && phoneNumber.isNotEmpty) {
+      ref
+          .read(authControllerProvider)
+          .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+      log('+${country!.phoneCode}$phoneNumber');
+    } else {
+      showSnackBar(context: context, content: "Fill All Details");
+    }
   }
 
   @override
@@ -85,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: size.width * 0.3,
               child: CustomButton(
                 text: "Next",
-                onTap: () {},
+                onTap: () => sendPhoneNumber(),
               ),
             )
           ],
