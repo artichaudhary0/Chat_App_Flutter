@@ -4,12 +4,13 @@ import 'package:chat_app_flutter/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
+  static const routeName = "/landing-screen";
 
-  const LandingScreen({super.key});
-
-  void navigationToLoginPage(BuildContext context){
+  void navigationToLoginScreen(BuildContext context) {
     Navigator.pushNamed(context, LoginScreen.routeName);
   }
+
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,35 +25,36 @@ class LandingScreen extends StatelessWidget {
             ),
             Text(
               "Welcome to WhatsApp",
-              style: TextStyle(
-                fontSize: 33,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 33),
             ),
-            SizedBox(height: size.height / 9),
+            SizedBox(
+              height: size.height / 9,
+            ),
             Image.asset(
               "assets/bg.png",
               height: 340,
               width: 340,
               color: tabColor,
             ),
-            SizedBox(height: size.height / 9),
+            SizedBox(
+              height: size.height / 9,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Read our Privacy Policy. Tap Agree and Continue to accept the terms and condition.",
+                "Read or Privacy Policy, Tap Agree and Continue to accept the terms and condition.",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: greyColor,
-                ),
+                style: TextStyle(color: greyColor),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(
+              height: 10,
+            ),
             SizedBox(
               width: size.width * 0.75,
               child: CustomButton(
                 text: "ACCEPT AND CONTINUE",
-                onPressed: ()=>navigationToLoginPage(context),
+                onTap: () => navigationToLoginScreen(context),
               ),
             )
           ],

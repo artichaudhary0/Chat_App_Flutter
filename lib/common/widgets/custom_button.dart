@@ -1,15 +1,15 @@
 import 'package:chat_app_flutter/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
-  const CustomButton({super.key, required this.text, required this.onPressed});
+  final VoidCallback onTap;
+  const CustomButton({super.key, required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         height: 50,
@@ -18,16 +18,7 @@ class CustomButton extends StatelessWidget {
           color: tabColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: blackColor,
-            fontWeight: FontWeight.w400,
-
-          ),
-        ),
-
-
+        child: Text(text,style: TextStyle(color: blackColor,fontWeight: FontWeight.w400),),
       ),
     );
   }

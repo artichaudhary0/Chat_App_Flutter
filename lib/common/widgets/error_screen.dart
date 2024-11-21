@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 class ErrorTextScreen extends StatelessWidget {
-  static const routeName = "/error-text-screen";
   final String errorText;
-   const ErrorTextScreen({super.key, required this.errorText});
+  static const routeName = '/error-text-screen';
+  const ErrorTextScreen(this.errorText, {super.key});
 
   @override
   Widget build(BuildContext context) {
