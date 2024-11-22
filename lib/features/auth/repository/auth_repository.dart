@@ -21,6 +21,7 @@ class AuthRepository {
   void signInWithPhoneNumber(BuildContext context, String phoneNumber) async {
     try {
       await auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
         verificationCompleted: (PhoneAuthCredential credential) async {
           await auth.signInWithCredential(credential);
         },
