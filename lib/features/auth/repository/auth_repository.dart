@@ -1,5 +1,6 @@
 import 'package:chat_app_flutter/common/utils/ultils.dart';
 import 'package:chat_app_flutter/features/auth/screens/opt_screen.dart';
+import 'package:chat_app_flutter/features/auth/screens/user_information_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,27 @@ class AuthRepository {
               arguments: verificationId);
         },
         codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+    } on FirebaseAuthException catch (error) {
+      showSnackBar(context: context, content: error.message!);
+    }
+  }
+
+  void verifyOTP(
+      {required BuildContext context,
+      required String verificationId,
+      required String userOTP}) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: userOTP,
+      );
+
+      await auth.signInWithCredential(credential);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        UserInformationScreen.routeName,
+        (route) => false,
       );
     } on FirebaseAuthException catch (error) {
       showSnackBar(context: context, content: error.message!);

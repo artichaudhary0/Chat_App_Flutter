@@ -4,6 +4,7 @@ import 'package:chat_app_flutter/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'features/auth/screens/opt_screen.dart';
 import 'features/landing/screen/landing_screen.dart';
 
 void main() async {

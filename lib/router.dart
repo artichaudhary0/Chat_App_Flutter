@@ -1,3 +1,4 @@
+import 'package:chat_app_flutter/features/auth/screens/user_information_screen.dart';
 import 'package:chat_app_flutter/features/landing/screen/landing_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case OTPScreen.routeName:
       final verificationId = settings.arguments as String;
       return MaterialPageRoute(builder: (context)=>OTPScreen(verificationId: verificationId,));
-    default:
+    case UserInformationScreen.routeName :
+      return MaterialPageRoute(
+        builder: (context) => UserInformationScreen(),
+      );
+      default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(
           body: ErrorTextScreen("This page does not exist!"),
