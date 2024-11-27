@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserInformationScreen extends ConsumerStatefulWidget {
-  static const routeName = "//user-information-screen";
+  static const routeName = "/user-information-screen";
   const UserInformationScreen({super.key});
 
   @override

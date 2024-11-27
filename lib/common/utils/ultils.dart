@@ -28,6 +28,7 @@ Future<File?> pickImageFromGallery(BuildContext context) async {
       content: error.toString(),
     );
   }
+  return image;
 }
 
 // video from gallery
@@ -46,6 +47,7 @@ Future<File?> pickVideoFromGallery(BuildContext context) async {
       content: error.toString(),
     );
   }
+  return video;
 }
 
 // gif from gallery
