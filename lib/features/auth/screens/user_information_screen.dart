@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:chat_app_flutter/common/utils/ultils.dart';
+import 'package:chat_app_flutter/features/auth/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,6 +20,18 @@ class _UserInformationScreenState extends ConsumerState<UserInformationScreen> {
   void selectImage() async {
     image = await pickImageFromGallery(context);
     setState(() {});
+  }
+
+  void storeUserData() {
+    String name = nameController.text.trim();
+
+    if (name.isNotEmpty) {
+      ref.read(authControllerProvider).saveUserDataToFirebase(
+            context,
+            name,
+            image,
+          );
+    }
   }
 
   @override
@@ -67,10 +79,9 @@ class _UserInformationScreenState extends ConsumerState<UserInformationScreen> {
                     ),
                   ),
                   IconButton(
-                      onPressed: () {
-                        // storeUserData()
-                      },
-                      icon: Icon(Icons.done))
+                    onPressed: storeUserData,
+                    icon: Icon(Icons.done),
+                  )
                 ],
               )
             ],

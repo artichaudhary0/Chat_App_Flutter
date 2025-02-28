@@ -1,9 +1,9 @@
 import 'dart:io';
-
-import 'package:chat_app_flutter/features/auth/repository/auth_repository.dart';
 import 'package:chat_app_flutter/models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../status/screens/repository/auth_repository.dart';
 
 final authControllerProvider = Provider(
   (ref) {
